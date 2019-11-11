@@ -13,6 +13,12 @@ public class Cliente {
 		this.direccion = direccion;
 	}
 
+	
+	public int getIdCliente() {
+		return idCliente;
+	}
+
+
 	public String getNombre() {
 		return nombre;
 	}
