@@ -9,12 +9,18 @@ public class Producto {
 	float precioDeVenta;
 	
 	
-	public Producto(String nombre, int cantidad, float precioDeCompra, float precioDeVenta) {
+	public Producto(int id,String nombre, int cantidad, float precioDeCompra, float precioDeVenta) {
 		super();
+		this.idProducto= id;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 		this.precioDeCompra = precioDeCompra;
 		this.precioDeVenta = precioDeVenta;
+	}
+	
+
+	public int getIdProducto() {
+		return idProducto;
 	}
 
 
