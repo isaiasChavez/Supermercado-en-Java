@@ -9,11 +9,16 @@ public class Ganancia {
 	Date fecha;
 	float ganancia;
 	
-	public Ganancia(int ventaId, Date fecha, float ganancia) {
+	public Ganancia(int id,int ventaId, Date fecha, float ganancia) {
 		super();
+		this.idGanancia = id;
 		this.ventaId = ventaId;
 		this.fecha = fecha;
 		this.ganancia = ganancia;
+	}
+	
+	public int getIdGanancia() {
+		return idGanancia;
 	}
 
 	public int getVentaId() {
