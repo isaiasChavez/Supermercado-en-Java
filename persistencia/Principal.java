@@ -3,7 +3,9 @@ package persistencia;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Proyecto.Ganancia;
 import Proyecto.Producto;
+import Proyecto.RegistroGanancia;
 import Proyecto.RegistroProducto;
 
 public class Principal {
@@ -11,6 +13,11 @@ public class Principal {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		
+		RegistroGanancia registroDeGanancias = new RegistroGanancia();
+		ArrayList<Ganancia> listaPrincipalDeGanancias = new ArrayList<Ganancia>();
+		registroDeGanancias.leerArchivo(listaPrincipalDeGanancias);
+		
 		
 		RegistroProducto registroDeProductos = new RegistroProducto();
 		ArrayList<Producto> listaPrincipalDeProductos = new ArrayList<Producto>();
@@ -61,6 +68,12 @@ public class Principal {
 			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
 			System.out.println("Salvados");
 			break;
+		case"20":
+			System.out.println("Salvando los datos");
+			
+			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
+			registroDeGanancias.escribirArchivo(listaPrincipalDeGanancias);
+			
 		case"0":
 			System.out.println("Salida");
 		default:
@@ -85,6 +98,20 @@ public class Principal {
 		System.out.println("|3| Modificar un producto.");
 		System.out.println("|4| Imprimir los productos.");
 		System.out.println("|5| Salvar los datos de productos.");
+		
+		System.out.println("GESTIÓN DE GANANCIA");
+		System.out.println("Listar ganancias");
+		System.out.println("Consultar ganancias por id");
+		
+		
+		
+		
+		
+		System.out.println("|20| Salvar todos los datos.");
+		
+		
+		
+		
 		System.out.println("|0| Salir");
 	}
 }

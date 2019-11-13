@@ -17,6 +17,10 @@ public class Ganancia {
 		this.ganancia = ganancia;
 	}
 	
+	public void setIdGanancia(int idGanancia) {
+		this.idGanancia = idGanancia;
+	}
+	
 	public int getIdGanancia() {
 		return idGanancia;
 	}
