@@ -28,8 +28,18 @@ public class RegistroGanancia {
 		
 	}
 	public void consultar(ArrayList<Ganancia> listaGanancias,Date fecha) {
+		Iterator<Ganancia> i = listaGanancias.iterator();
 		
-	}
+		while(i.hasNext()) {
+			Ganancia gananciaTemporal = i.next();
+			if(gananciaTemporal.fecha.equals(fecha)) {
+				System.out.println("La ganancia temporal encontrada fue la de " + gananciaTemporal.getFecha().getDate());}
+				
+			}
+		}
+		
+	
+
 	public void escribirArchivo(ArrayList<Ganancia> listaGanancias) {
 		FileWriter fichero = null;
 		PrintWriter impresor = null;

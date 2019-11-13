@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -68,6 +69,24 @@ public class Principal {
 			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
 			System.out.println("Salvados");
 			break;
+		case "10": //LISTAR GANANCIAS
+			registroDeGanancias.imprimirLista(listaPrincipalDeGanancias);
+			
+			break;
+		case "11": //CONSULTAR GANANCIA POR ID
+			
+			int dia,mes,ano;
+			
+			System.out.println("Ingrese la fecha de la ganancia que desea consultar: ");
+			System.out.println("Ingrese el día: ");
+			dia = sc.nextInt();
+			System.out.println("Ingrese el mes: ");
+			mes = sc.nextInt();
+			System.out.println("Ingrese el año: ");
+			ano = sc.nextInt();
+			Date fechaAConsultar = new Date(ano,mes,dia);
+			registroDeGanancias.consultar(listaPrincipalDeGanancias, fechaAConsultar);
+			break;
 		case"20":
 			System.out.println("Salvando los datos");
 			
@@ -95,23 +114,21 @@ public class Principal {
 	public void imprimirMenu() {
 		System.out.println("|1| Dar de alta un producto.");
 		System.out.println("|2| Dar de baja un producto.");
-		System.out.println("|3| Modificar un producto.");
-		System.out.println("|4| Imprimir los productos.");
-		System.out.println("|5| Salvar los datos de productos.");
+		System.out.println("|3| Imprimir los productos.");
+		System.out.println("GESTIÓN DE CARTERA DE CLIENTES");
+		System.out.println("|4| Alta de clientes");
+		System.out.println("|5| Listar clientes");
+		System.out.println("|6| Eliminar clientes");
+		System.out.println("GESTIÓN DE CARTERA DE VENTAS");
+		System.out.println("|7| Insertar cliente a la cola");
+		System.out.println("|8| Listar cola de clientes");
+		System.out.println("|9| Atender clientes");
 		
 		System.out.println("GESTIÓN DE GANANCIA");
-		System.out.println("Listar ganancias");
-		System.out.println("Consultar ganancias por id");
-		
-		
-		
-		
+		System.out.println("|10| Listar ganancias");
+		System.out.println("|11| Consultar ganancias por id");
 		
 		System.out.println("|20| Salvar todos los datos.");
-		
-		
-		
-		
 		System.out.println("|0| Salir");
 	}
 }
