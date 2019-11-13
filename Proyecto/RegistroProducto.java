@@ -14,6 +14,7 @@ public class RegistroProducto {
 		listaProductos.add(producto);
 	}
 	
+
 	public Producto buscarProducto(ArrayList<Producto> listaProductos,int idProducto) {
 		
 		if(listaProductos.get(idProducto) != null) {
@@ -33,7 +34,8 @@ public class RegistroProducto {
 		
 		while(iterador.hasNext()) {
 			Producto productito = iterador.next();
-			System.out.println(productito.toString());			
+			System.out.println(productito.toString());
+			System.out.println("Los datos son: " + productito.getNombre() +" : cantidad: "+ productito.getCantidad());
 		}
 		
 		
@@ -81,7 +83,7 @@ public class RegistroProducto {
 			do {
 				linea = lector.nextLine();
 				if(linea!= null) {
-				System.out.println(linea);
+
 				String[] cortarString = linea.split("::");
 				Producto productoArchivo = new Producto(Integer.parseInt(cortarString[0]),cortarString[1],Integer.parseInt(cortarString[2]),Float.parseFloat(cortarString[3]),Float.parseFloat(cortarString[4]));
 				listaProductos.add(productoArchivo);

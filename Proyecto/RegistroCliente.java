@@ -25,6 +25,7 @@ public class RegistroCliente {
 		
 		Cliente clienteBuscado;
 		clienteBuscado = listaClientes.get(idCliente);
+		
 		if(clienteBuscado != null) {
 			return clienteBuscado;
 		}

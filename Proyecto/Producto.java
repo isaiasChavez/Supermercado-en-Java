@@ -8,7 +8,9 @@ public class Producto {
 	float precioDeCompra;
 	float precioDeVenta;
 	
-	
+	public Producto() {
+		
+	}
 	public Producto(int id,String nombre, int cantidad, float precioDeCompra, float precioDeVenta) {
 		super();
 		this.idProducto= id;
@@ -19,6 +21,9 @@ public class Producto {
 	}
 	
 
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
+	}
 	public int getIdProducto() {
 		return idProducto;
 	}
