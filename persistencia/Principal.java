@@ -4,8 +4,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Proyecto.Cliente;
 import Proyecto.Ganancia;
 import Proyecto.Producto;
+import Proyecto.RegistroCliente;
 import Proyecto.RegistroGanancia;
 import Proyecto.RegistroProducto;
 
@@ -24,8 +26,10 @@ public class Principal {
 		ArrayList<Producto> listaPrincipalDeProductos = new ArrayList<Producto>();
 		registroDeProductos.leerArchivo(listaPrincipalDeProductos);
 		
-		
-		
+		RegistroCliente registroDeClientes = new RegistroCliente();
+		ArrayList<Cliente> listaPrincipalDeClientes = new ArrayList<Cliente>();
+		registroDeClientes.leerDeArchivo(listaPrincipalDeClientes);
+
 		
 		String respuesta="";
 		Principal p = new Principal();
@@ -58,14 +62,40 @@ public class Principal {
 		case "2": //BAJA
 			System.out.println("Respuesta 2");
 			break;
-		case "3": //MODIFICAR
-			System.out.println("Respuesta 3");
-			break;
-		case "4"://IMPRIMIR
-			System.out.println("Respuesta 4");
+		case "3": //IMPRIMIR PRODUCTOS
 			registroDeProductos.imprimirLista(listaPrincipalDeProductos);
 			break;
-		case "5": //SALVAR DATOS
+		case "4"://ALTA CLIENTES
+			
+			Cliente clienteTemporal = new Cliente();
+			
+			System.out.println("Ingrese los datos del cliente");
+			System.out.println("Ingrese un id par el cliente: ");
+			clienteTemporal.setIdCliente(sc.nextInt());
+			System.out.println("Ingrese el nombre del cliente:");
+			clienteTemporal.setNombre(sc.nextLine());
+			System.out.println("Ingrese un dirección para el cliente: ");
+			clienteTemporal.setDireccion(sc.nextLine());
+			
+			break;
+		case "5": //LISTAR CLIENTES
+			System.out.println("LISTA DE CLIENTES");
+			registroDeClientes.imprimirLista(listaPrincipalDeClientes);
+			
+			break;
+		case "6": //ELIMINAR CLIENTES
+			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
+			System.out.println("Salvados");
+			break;
+		case "7": //INSERTAR CLIENTE A LA COLA
+			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
+			System.out.println("Salvados");
+			break;
+		case "8": //LISTAR COLA DE CLIENTES
+			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
+			System.out.println("Salvados");
+			break;
+		case "9": //ATENDER CLIENTES
 			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
 			System.out.println("Salvados");
 			break;
@@ -87,6 +117,7 @@ public class Principal {
 			Date fechaAConsultar = new Date(ano,mes,dia);
 			registroDeGanancias.consultar(listaPrincipalDeGanancias, fechaAConsultar);
 			break;
+			
 		case"20":
 			System.out.println("Salvando los datos");
 			

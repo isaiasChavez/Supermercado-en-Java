@@ -12,8 +12,14 @@ public class Cliente {
 		this.nombre = nombre;
 		this.direccion = direccion;
 	}
-
+	public Cliente() {
+		
+	}
 	
+	public void setIdCliente(int idCliente) {
+		this.idCliente =  idCliente;
+	}
+
 	public int getIdCliente() {
 		return idCliente;
 	}
