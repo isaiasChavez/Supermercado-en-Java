@@ -13,14 +13,19 @@ public class RegistroVenta {
 		
 		Iterator<Venta> iterador = listaVentas.iterator();
 		
+		if(!iterador.hasNext()) {
+			System.out.println("La cola está vacia.");
+		}
 		while(iterador.hasNext()){	
 			Venta ventita =  iterador.next();		
-			System.out.println(ventita.toString());
+			System.out.println("Nombre del cliente: "+ ventita.getCliente().nombre + " Venta total: " + ventita.getTotalVenta());
+			System.out.println("Productos del cliente: ");
+			ventita.imprimirCarrito();	
+			
 		}
 		
 	}
 	public void atender(ArrayList<Venta> listaVentas) {
-		
 		
 		
 	}

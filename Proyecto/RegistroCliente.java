@@ -24,6 +24,8 @@ public class RegistroCliente {
 	public Cliente buscarCliente(ArrayList<Cliente> listaClientes,int idCliente) {
 		
 		Cliente clienteBuscado;
+		
+		
 		clienteBuscado = listaClientes.get(idCliente);
 		
 		if(clienteBuscado != null) {
@@ -42,7 +44,7 @@ public class RegistroCliente {
 		
 		while(iterador.hasNext()){	
 			Cliente clientito =  iterador.next();		
-			System.out.println(clientito.toString());
+			System.out.println("Nombre: " + clientito.getNombre());
 		}
 		
 		

@@ -32,10 +32,13 @@ public class RegistroProducto {
 		
 		Iterator<Producto> iterador = listaProductos.iterator();
 		
+		int i =0;
 		while(iterador.hasNext()) {
+			
 			Producto productito = iterador.next();
-			System.out.println(productito.toString());
-			System.out.println("Los datos son: " + productito.getNombre() +" : cantidad: "+ productito.getCantidad());
+			
+			System.out.println("|"+ i + 1 +"|"+"Los datos son: " + productito.getNombre() +" : cantidad: "+ productito.getCantidad());
+			i++;
 		}
 		
 		
