@@ -10,6 +10,8 @@ import Proyecto.Producto;
 import Proyecto.RegistroCliente;
 import Proyecto.RegistroGanancia;
 import Proyecto.RegistroProducto;
+import Proyecto.RegistroVenta;
+import Proyecto.Venta;
 
 public class Principal {
 
@@ -30,17 +32,22 @@ public class Principal {
 		ArrayList<Cliente> listaPrincipalDeClientes = new ArrayList<Cliente>();
 		registroDeClientes.leerDeArchivo(listaPrincipalDeClientes);
 
+		RegistroVenta registroVentas = new RegistroVenta();
+		ArrayList<Venta> listaPrincipalDeVentas = new ArrayList<Venta>();
+		
 		
 		String respuesta="";
 		Principal p = new Principal();
 		
 		
 		
-		while(respuesta!=  "0" ) {
+		while(respuesta!=  "0"  ) {
 			
 			
 		p.imprimirMenu();
+	
 		respuesta = sc.nextLine();
+		
 		switch (respuesta) {
 		case "1"://AGREGAR PRODUCTO
 			Producto productoTemporal = new Producto();
@@ -72,10 +79,12 @@ public class Principal {
 			System.out.println("Ingrese los datos del cliente");
 			System.out.println("Ingrese un id par el cliente: ");
 			clienteTemporal.setIdCliente(sc.nextInt());
-			System.out.println("Ingrese el nombre del cliente:");
+			System.out.println("Ingrese el nombre del cliente: ");
+			sc.nextLine();
 			clienteTemporal.setNombre(sc.nextLine());
 			System.out.println("Ingrese un dirección para el cliente: ");
 			clienteTemporal.setDireccion(sc.nextLine());
+			registroDeClientes.insertar(listaPrincipalDeClientes, clienteTemporal);
 			
 			break;
 		case "5": //LISTAR CLIENTES
@@ -88,16 +97,81 @@ public class Principal {
 			System.out.println("Salvados");
 			break;
 		case "7": //INSERTAR CLIENTE A LA COLA
-			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
-			System.out.println("Salvados");
+			
+			int idTemporalCliente,idTemporalProducto;
+			System.out.println("Ingrese el número de cliente que desea agregar a la cola: ");
+			idTemporalCliente = sc.nextInt();
+			
+			
+			try {
+				
+		
+			
+			Cliente clienteAInsertar = listaPrincipalDeClientes.get(idTemporalCliente);
+			
+			
+			System.out.println("El cliente selecionado fue: " + clienteAInsertar.getNombre() );
+			
+			Venta nuevaVenta = new Venta();
+			
+			ArrayList<Producto> carrito = nuevaVenta.getCarritoProducto();
+			
+			carrito = new ArrayList<Producto>();
+			
+			System.out.println("Ingrese los datos de la venta: ");
+			System.out.println("Ingrese el id de la venta: ");
+			nuevaVenta.setIdVenta(sc.nextInt());
+			
+			do {
+				
+			System.out.println("Ingrese los productos a comprar: ");
+			System.out.println("PRODUCTOS EN STOCK_: ");
+			
+			registroDeProductos.imprimirLista(listaPrincipalDeProductos);
+			
+			
+			System.out.println("|100| SALIR");
+			idTemporalProducto = sc.nextInt() + 1;
+			
+			if(idTemporalProducto!= 100) {
+				
+			Producto productoSeleccionado = listaPrincipalDeProductos.get(idTemporalProducto);
+			System.out.println("El producto seleccionado fue: " + productoSeleccionado.getNombre());
+			carrito.add(productoSeleccionado);
+			
+			
+			}
+			
+			
+			} while (idTemporalProducto != 100);
+			
+			nuevaVenta.setCarritoProducto(carrito);
+			nuevaVenta.setCliente(clienteAInsertar);
+			nuevaVenta.setFecha(new Date(1000000));
+			nuevaVenta.imprimirCarrito();
+			
+			registroVentas.insertarVenta(listaPrincipalDeVentas, nuevaVenta);		
+			
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				idTemporalProducto = 0;
+			}
+			
 			break;
 		case "8": //LISTAR COLA DE CLIENTES
-			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
-			System.out.println("Salvados");
+			System.out.println("La cola de clientes es la siguiente: ");
+			
+			registroVentas.imprimirLista(listaPrincipalDeVentas);
+			
+			
+			
 			break;
 		case "9": //ATENDER CLIENTES
-			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
-			System.out.println("Salvados");
+			
+			
+			
+			
+			
 			break;
 		case "10": //LISTAR GANANCIAS
 			registroDeGanancias.imprimirLista(listaPrincipalDeGanancias);
@@ -113,6 +187,7 @@ public class Principal {
 			System.out.println("Ingrese el mes: ");
 			mes = sc.nextInt();
 			System.out.println("Ingrese el año: ");
+			
 			ano = sc.nextInt();
 			Date fechaAConsultar = new Date(ano,mes,dia);
 			registroDeGanancias.consultar(listaPrincipalDeGanancias, fechaAConsultar);
@@ -123,6 +198,7 @@ public class Principal {
 			
 			registroDeProductos.escribirArchivo(listaPrincipalDeProductos);
 			registroDeGanancias.escribirArchivo(listaPrincipalDeGanancias);
+			registroDeClientes.escribirArchivo(listaPrincipalDeClientes);
 			
 		case"0":
 			System.out.println("Salida");
@@ -143,6 +219,8 @@ public class Principal {
 	
 	
 	public void imprimirMenu() {
+		System.out.println("");
+		System.out.println("--------------------------------------------");
 		System.out.println("|1| Dar de alta un producto.");
 		System.out.println("|2| Dar de baja un producto.");
 		System.out.println("|3| Imprimir los productos.");
@@ -161,5 +239,7 @@ public class Principal {
 		
 		System.out.println("|20| Salvar todos los datos.");
 		System.out.println("|0| Salir");
+		System.out.println("--------------------------------------------");
+		System.out.println("");
 	}
 }
