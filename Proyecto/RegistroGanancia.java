@@ -20,9 +20,15 @@ public class RegistroGanancia {
 		
 		Iterator<Ganancia> i = listaGanancias.iterator();
 		
+		if(!i.hasNext()) {
+			System.out.println("La lista de ganancias está vacia.");
+		}
+		
 		while(i.hasNext()) {
 			Ganancia gananciaAImprimir = i.next();
-			System.out.println(i.toString());
+			
+			System.out.println(gananciaAImprimir);
+			
 		}
 		
 		

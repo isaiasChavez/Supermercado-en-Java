@@ -18,40 +18,47 @@ public class RegistroCliente {
 	public void insertar( ArrayList<Cliente> listaClientes,Cliente cliente) {
 		
 		listaClientes.add(cliente);
-		
+		System.out.println("Se ha ingresado el cliente con id: "+ cliente.getIdCliente());
+		System.out.println("----------------------------------------");
 	}
 	
 	public Cliente buscarCliente(ArrayList<Cliente> listaClientes,int idCliente) {
 		
 		Cliente clienteBuscado;
 		
+		Iterator<Cliente> i = listaClientes.iterator();
 		
-		clienteBuscado = listaClientes.get(idCliente);
+		while(i.hasNext()) {
+			
+			clienteBuscado = i.next();
+			if(clienteBuscado.idCliente == idCliente) {
+				return clienteBuscado;
+			}
+		}
 		
-		if(clienteBuscado != null) {
-			return clienteBuscado;
-		}
-		else {
-			System.out.println("No se encontraron coincidencias.");
-			return null;
-		}
+		return null;
 		
 	}
 	
 	public void imprimirLista(ArrayList<Cliente> listaClientes) {
+		System.out.println("---------LISTA DE CLIENTES------------");
 		
 		Iterator<Cliente> iterador = listaClientes.iterator();
-		
 		while(iterador.hasNext()){	
-			Cliente clientito =  iterador.next();		
-			System.out.println("Nombre: " + clientito.getNombre());
+			Cliente clienteLista =  iterador.next();		
+			System.out.println(clienteLista);
 		}
+		System.out.println("---------...............------------");
 		
 		
 	}
 	public void eliminar( ArrayList<Cliente> listaClientes,Cliente cliente) {
+		
 		if(listaClientes.contains(cliente)) {
-			listaClientes.remove(listaClientes.contains(cliente));
+			listaClientes.remove(cliente);
+			System.out.println("La posicion es: "+ cliente);
+			
+			
 		}else {
 			System.out.println("No se encontraron ocurrencias.");
 		}

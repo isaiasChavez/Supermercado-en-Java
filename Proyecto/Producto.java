@@ -69,5 +69,10 @@ public class Producto {
 	}
 	
 		
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "ID: " + this.idProducto + "Nombre: " + this.nombre +" Cantidad: "+ this.cantidad + "Precio de venta: "+this.precioDeVenta; 
+	}
 	
 }

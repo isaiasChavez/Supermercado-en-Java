@@ -10,42 +10,76 @@ import java.util.Scanner;
 
 public class RegistroProducto {
 
+	private static int idProductos = 0;
+	
+	
+	
+	public int getIdProductos() {
+		return idProductos;
+	}
+
 	public void insertar(ArrayList<Producto> listaProductos,Producto producto) {
+		
+
 		listaProductos.add(producto);
+		idProductos++;
+		System.out.println("Producto Ingresado correctamente"+"Id Actual " + idProductos);
 	}
 	
 
 	public Producto buscarProducto(ArrayList<Producto> listaProductos,int idProducto) {
 		
-		if(listaProductos.get(idProducto) != null) {
-			return listaProductos.get(idProducto);
+		Iterator<Producto> i = listaProductos.iterator();
+		
+		while(i.hasNext())
+		{
+			Producto e = i.next();
 			
-		}else {
-		return null;
+			if(e.getIdProducto() == idProducto) {
+				return e;
+			}		
 		}
+		return null;		
 		
+	}
+	public boolean existe(ArrayList<Producto> listaProductos,int idProducto) {
 		
+		Iterator<Producto> i = listaProductos.iterator();
+		
+	
+		while(i.hasNext()) {
+			Producto  p = i.next();
+			if(p.idProducto == idProducto)
+			return true;
+
+		}
+		return false;
 		
 	}
 	
+	
+	
+	//
+
 	public void imprimirLista(ArrayList<Producto> listaProductos) {
+		
 		
 		Iterator<Producto> iterador = listaProductos.iterator();
 		
-		int i =0;
+		System.out.println("-----------------LISTA DE PRODUCTOS:-----------------------");
 		while(iterador.hasNext()) {
-			
-			Producto productito = iterador.next();
-			
-			System.out.println("|"+ i + 1 +"|"+"Los datos son: " + productito.getNombre() +" : cantidad: "+ productito.getCantidad());
-			i++;
-		}
+			Producto productoDeLaLista = iterador.next();
+			System.out.println(productoDeLaLista);
+		}	
 		
-		
+		System.out.println("-----------------.................-----------------------");
 	}
+	
 	public void eliminar(ArrayList<Producto> listaProductos,Producto producto) {
-		
+		//EN OBRAS
 	}
+	
+	
 	public void escribirArchivo(ArrayList<Producto> listaProductos) {
 		FileWriter fichero = null;
 		PrintWriter impresor = null;

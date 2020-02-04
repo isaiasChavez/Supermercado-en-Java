@@ -25,7 +25,41 @@ public class RegistroVenta {
 		}
 		
 	}
-	public void atender(ArrayList<Venta> listaVentas) {
+	public void atender(ArrayList<Venta> listaVentas , ArrayList<Ganancia> listaGanancias) {
+		
+		Iterator<Venta> i = listaVentas.iterator();
+		
+		Venta venta;
+		
+		Ganancia ganancias = new Ganancia();
+		
+		
+		
+		while(i.hasNext()) {
+			System.out.println("----------------------------------------");
+			venta = i.next();
+			System.out.println("-----------------Datos de la venta:------------- ");
+			
+			System.out.println("Cliente:--------------- "+ venta.getCliente().getNombre());
+			System.out.println("Cliente ID:--------------- "+venta.getCliente().getIdCliente());
+			System.out.println("Productos: ");
+			venta.imprimirCarrito();
+			System.out.println("-----------------------------------------------");
+			System.out.println("Venta total:--------------- "+ venta.getTotalVenta());
+			
+			ganancias.setFecha(venta.getFecha());// Aquí puede suceder un error
+			ganancias.setVentaId(venta.getIdVenta());
+			ganancias.setGanancia(venta.getTotalVenta() - venta.getTotalGanancias());
+			ganancias.setIdGanancia(venta.idVenta);
+			listaGanancias.add(ganancias);
+			
+			System.out.println("----------------------------------------");
+			
+			
+		}
+		
+		listaVentas.clear();
+		
 		
 		
 	}

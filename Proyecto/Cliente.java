@@ -41,7 +41,10 @@ public class Cliente {
 		this.direccion = direccion;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "ID:"+ this.getIdCliente() + "Nombre: "+this.getNombre()+"Dirección: "+this.getDireccion();
+	}
 	
 }
 

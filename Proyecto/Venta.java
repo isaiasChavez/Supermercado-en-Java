@@ -12,6 +12,7 @@ public class Venta {
 	ArrayList<Producto> carritoProducto;
 	float totalVenta;
 	Date fecha;
+	float totalGanancias ;
 	
 	public Venta( int idVenta,Cliente cliente, ArrayList<Producto> carritoProducto, float totalVenta, Date fecha) {
 		super();
@@ -20,6 +21,8 @@ public class Venta {
 		this.carritoProducto = carritoProducto;
 		this.totalVenta = totalVenta;
 		this.fecha = fecha;
+		this.totalGanancias = 0;
+		
 	}
 	public Venta() {
 		
@@ -57,6 +60,7 @@ public class Venta {
 		while(i.hasNext()) {
 			Producto j = i.next();
 			this.totalVenta += j.precioDeVenta;
+			this.totalGanancias += j.getPrecioDeCompra();
 		}
 		
 		this.carritoProducto = carritoProducto;
@@ -73,7 +77,13 @@ public class Venta {
 		
 	}
 	
-
+	
+	public float getTotalGanancias() {
+		return totalGanancias;
+	}
+	public void setTotalGanancias(float totalGanancias) {
+		this.totalGanancias = totalGanancias;
+	}
 	public float getTotalVenta() {
 		return totalVenta;
 	}
